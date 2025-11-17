@@ -1,26 +1,455 @@
 @import "tailwindcss";
 
+/* ===== PALETA DE COLORES OSCURA ELEGANTE ===== */
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  /* Colores principales - Tono oscuro profesional */
+  --dark-charcoal: #0F1419;
+  --dark-slate: #1A2026;
+  --dark-steel: #2D3748;
+  --accent-steel: #4A5568;
+  --accent-silver: #718096;
+  --light-silver: #A0AEC0;
+  --pure-white: #FFFFFF;
+  
+  /* Acentos sutiles */
+  --accent-cool: #63B3ED;
+  --accent-warm: #F6AD55;
+  
+  /* Sombras profesionales */
+  --shadow-subtle: 0 2px 4px rgba(0, 0, 0, 0.3);
+  --shadow-medium: 0 4px 6px rgba(0, 0, 0, 0.4);
+  --shadow-elevated: 0 10px 15px rgba(0, 0, 0, 0.5);
+  
+  /* Transiciones elegantes */
+  --transition-brisk: 0.2s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-smooth: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  --transition-majestic: 0.5s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+/* ===== RESET PROFESIONAL ===== */
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  border-radius: 0 !important; /* Prohibidos bordes redondeados */
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+html {
+  scroll-behavior: smooth;
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
+  line-height: 1.7;
+  color: var(--light-silver);
+  background-color: var(--dark-charcoal);
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+  font-weight: 400;
+}
+
+/* ===== TIPOGRAFÍA ELEGANTE ===== */
+h1, h2, h3, h4, h5, h6 {
+  font-weight: 600;
+  line-height: 1.3;
+  color: var(--pure-white);
+  letter-spacing: -0.02em;
+}
+
+h1 {
+  font-size: 3.5rem;
+  font-weight: 700;
+}
+
+h2 {
+  font-size: 2.5rem;
+}
+
+h3 {
+  font-size: 2rem;
+}
+
+p {
+  font-size: 1.125rem;
+  color: var(--light-silver);
+  font-weight: 400;
+}
+
+/* ===== ANIMACIONES SUTILES CON PROPÓSITO ===== */
+
+/* Entrada elegante desde abajo */
+@keyframes elegantAppear {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+/* Desvanecimiento suave */
+@keyframes subtleFade {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+/* Efecto de revelado horizontal */
+@keyframes revealFromLeft {
+  from {
+    transform: translateX(-100%);
+    opacity: 0;
+  }
+  to {
+    transform: translateX(0);
+    opacity: 1;
+  }
+}
+
+/* Flotación sutil */
+@keyframes gentleFloat {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-8px);
+  }
+}
+
+/* ===== CLASES DE ANIMACIÓN ===== */
+.animate-elegant-appear {
+  animation: elegantAppear 0.8s var(--transition-majestic) both;
+}
+
+.animate-subtle-fade {
+  animation: subtleFade 0.6s var(--transition-smooth) both;
+}
+
+.animate-reveal-left {
+  animation: revealFromLeft 0.8s var(--transition-majestic) both;
+}
+
+.animate-gentle-float {
+  animation: gentleFloat 6s ease-in-out infinite;
+}
+
+/* ===== COMPONENTES PROFESIONALES SIN BORDES REDONDEADOS ===== */
+
+/* Botones elegantes - SIN BORDES REDONDEADOS */
+.btn-sleek {
+  background: linear-gradient(135deg, var(--dark-steel), var(--accent-steel));
+  color: var(--pure-white);
+  padding: 14px 36px;
+  font-weight: 500;
+  font-size: 1rem;
+  border: none;
+  cursor: pointer;
+  transition: all var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+}
+
+.btn-sleek::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.1),
+    transparent
+  );
+  transition: left var(--transition-majestic);
+}
+
+.btn-sleek:hover::before {
+  left: 100%;
+}
+
+.btn-sleek:hover {
+  background: linear-gradient(135deg, var(--accent-steel), var(--dark-steel));
+  transform: translateY(-2px);
+  box-shadow: var(--shadow-medium);
+}
+
+.btn-sleek-accent {
+  background: transparent;
+  color: var(--accent-cool);
+  border: 1px solid var(--accent-steel);
+  padding: 14px 36px;
+  font-weight: 500;
+  transition: all var(--transition-smooth);
+}
+
+.btn-sleek-accent:hover {
+  background: var(--accent-cool);
+  color: var(--dark-charcoal);
+  border-color: var(--accent-cool);
+  transform: translateY(-2px);
+}
+
+/* Tarjetas profesionales - SIN BORDES REDONDEADOS */
+.card-minimal {
+  background: var(--dark-slate);
+  border: 1px solid var(--dark-steel);
+  padding: 2.5rem;
+  transition: all var(--transition-smooth);
+  position: relative;
+  overflow: hidden;
+}
+
+.card-minimal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 3px;
+  height: 100%;
+  background: linear-gradient(
+    to bottom,
+    var(--accent-cool),
+    var(--accent-warm)
+  );
+  transform: scaleY(0);
+  transition: transform var(--transition-majestic);
+}
+
+.card-minimal:hover::before {
+  transform: scaleY(1);
+}
+
+.card-minimal:hover {
+  border-color: var(--accent-silver);
+  transform: translateY(-5px);
+  box-shadow: var(--shadow-elevated);
+}
+
+/* Navegación profesional - SIN BORDES REDONDEADOS */
+.navbar-minimal {
+  background: var(--dark-charcoal);
+  border-bottom: 1px solid var(--dark-steel);
+  backdrop-filter: blur(10px);
+  transition: all var(--transition-smooth);
+}
+
+.nav-link-minimal {
+  position: relative;
+  color: var(--light-silver);
+  font-weight: 500;
+  padding: 1rem 1.5rem;
+  text-decoration: none;
+  transition: all var(--transition-brisk);
+  text-transform: uppercase;
+  letter-spacing: 0.5px;
+  font-size: 0.9rem;
+}
+
+.nav-link-minimal::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: var(--accent-cool);
+  transition: width var(--transition-smooth);
+}
+
+.nav-link-minimal:hover::after,
+.nav-link-minimal.active::after {
+  width: 100%;
+}
+
+.nav-link-minimal:hover,
+.nav-link-minimal.active {
+  color: var(--pure-white);
+}
+
+/* Hero section profesional */
+.hero-minimal {
+  background: linear-gradient(
+    135deg,
+    var(--dark-charcoal) 0%,
+    var(--dark-slate) 50%,
+    var(--dark-charcoal) 100%
+  );
+  position: relative;
+  overflow: hidden;
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+}
+
+.hero-minimal::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: 
+    linear-gradient(45deg, transparent 0%, rgba(99, 179, 237, 0.03) 100%);
+  animation: gentleFloat 20s ease-in-out infinite;
+}
+
+/* Efectos de texto minimalistas */
+.text-glow {
+  text-shadow: 0 0 20px rgba(99, 179, 237, 0.3);
+}
+
+.text-accent-cool {
+  color: var(--accent-cool);
+}
+
+.text-accent-warm {
+  color: var(--accent-warm);
+}
+
+/* ===== SECCIONES ESPECIALIZADAS ===== */
+
+/* Grid de servicios */
+.service-grid {
+  display: grid;
+  gap: 2rem;
+}
+
+.service-item-minimal {
+  background: var(--dark-slate);
+  border: 1px solid var(--dark-steel);
+  padding: 2rem;
+  transition: all var(--transition-smooth);
+  position: relative;
+}
+
+.service-item-minimal:hover {
+  border-color: var(--accent-cool);
+  transform: translateY(-3px);
+  box-shadow: var(--shadow-medium);
+}
+
+.service-icon-minimal {
+  color: var(--accent-cool);
+  margin-bottom: 1rem;
+  transition: all var(--transition-smooth);
+}
+
+.service-item-minimal:hover .service-icon-minimal {
+  color: var(--accent-warm);
+  transform: scale(1.1);
+}
+
+/* Formularios minimalistas */
+.form-input-minimal {
+  width: 100%;
+  padding: 1rem;
+  background: var(--dark-slate);
+  border: 1px solid var(--dark-steel);
+  color: var(--pure-white);
+  font-size: 1rem;
+  transition: all var(--transition-smooth);
+}
+
+.form-input-minimal:focus {
+  outline: none;
+  border-color: var(--accent-cool);
+  box-shadow: 0 0 0 2px rgba(99, 179, 237, 0.1);
+}
+
+.form-input-minimal::placeholder {
+  color: var(--accent-silver);
+}
+
+/* ===== EFECTOS DE SEPARACIÓN ===== */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    var(--dark-steel),
+    transparent
+  );
+  margin: 4rem 0;
+}
+
+/* ===== RESPONSIVE DESIGN ===== */
+@media (max-width: 768px) {
+  h1 {
+    font-size: 2.5rem;
+  }
+  
+  h2 {
+    font-size: 2rem;
+  }
+  
+  .hero-minimal::before {
+    animation-duration: 30s;
+  }
+  
+  .nav-link-minimal {
+    padding: 0.75rem 1rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* Accesibilidad */
+@media (prefers-reduced-motion: reduce) {
+  * {
+    animation-duration: 0.01ms !important;
+    animation-iteration-count: 1 !important;
+    transition-duration: 0.01ms !important;
+  }
+}
+
+/* Focus states para accesibilidad */
+.focus-visible-minimal {
+  outline: 2px solid var(--accent-cool);
+  outline-offset: 2px;
+}
+
+/* ===== UTILITARIOS ESPECIALES ===== */
+.glass-morphism {
+  background: rgba(26, 32, 38, 0.8);
+  backdrop-filter: blur(10px);
+  border: 1px solid rgba(45, 55, 72, 0.3);
+}
+
+.text-gradient-minimal {
+  background: linear-gradient(135deg, var(--accent-cool), var(--accent-warm));
+  -webkit-background-clip: text;
+  background-clip: text;
+  color: transparent;
+  font-weight: 600;
+}
+
+.border-gradient-minimal {
+  border: 1px solid transparent;
+  background: linear-gradient(var(--dark-slate), var(--dark-slate)) padding-box,
+              linear-gradient(135deg, var(--accent-cool), var(--accent-warm)) border-box;
+}
+
+/* ===== SCROLLBAR PERSONALIZADO ===== */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: var(--dark-charcoal);
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--dark-steel);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--accent-steel);
 }
