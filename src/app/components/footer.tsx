@@ -110,7 +110,7 @@ export default function Footer() {
           className="text-center w-full"
         >
           <p className="text-gray-500 text-sm">
-            © 2024 Web Adventures HN. Todos los derechos reservados.
+            © 2025 Web Adventures HN. Todos los derechos reservados.
           </p>
         </motion.div>
 

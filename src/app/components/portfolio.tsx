@@ -13,7 +13,9 @@ const proyectos = [
     tecnologias: ["Next.js", "TypeScript", "Tailwind"],
     enlaceDemo: "https://colegio-pompilio-ortega-6y71.vercel.app/",
     enlaceCodigo: "https://github.com/yuren37/colegio-pompilio-ortega.git",
-    categoria: "Web Institucional"
+    categoria: "Web Institucional",
+    color: "from-blue-500 to-cyan-400",
+    glow: "hover:shadow-blue-500/20"
   },
   {
     id: 2,
@@ -23,7 +25,9 @@ const proyectos = [
     tecnologias: ["React", "Tailwind", "Componentes"],
     enlaceDemo: "#",
     enlaceCodigo: "#",
-    categoria: "Sitio Corporativo"
+    categoria: "Sitio Corporativo",
+    color: "from-purple-500 to-pink-400",
+    glow: "hover:shadow-purple-500/20"
   },
   {
     id: 3,
@@ -33,7 +37,9 @@ const proyectos = [
     tecnologias: ["Base de Datos", "Sistema CRUD", "Backend"],
     enlaceDemo: "#",
     enlaceCodigo: "#",
-    categoria: "En Construcción"
+    categoria: "En Construcción",
+    color: "from-orange-400 to-yellow-400",
+    glow: "hover:shadow-orange-500/20"
   }
 ];
 
@@ -43,54 +49,63 @@ export default function Portafolio() {
   };
 
   return (
-    <section id="portafolio" className="py-24 bg-gradient-to-br from-gray-900 to-[#0d1117] relative overflow-hidden">
+    <section className="min-h-screen bg-gradient-to-br from-gray-900 via-[#0d1117] to-black relative overflow-hidden flex items-center justify-center">
       
-      {/* Efectos de fondo */}
-      <div className="absolute inset-0 opacity-20">
-        <div className="absolute top-10 right-1/4 w-64 h-64 bg-blue-500 rounded-full blur-3xl"></div>
-        <div className="absolute bottom-10 left-1/4 w-96 h-96 bg-purple-500 rounded-full blur-3xl"></div>
+      {/* Efectos de fondo luminosos */}
+      <div className="absolute inset-0 opacity-30">
+        <div className="absolute top-1/4 left-1/4 w-96 h-96 bg-blue-500 rounded-full blur-3xl animate-pulse"></div>
+        <div className="absolute bottom-1/4 right-1/4 w-96 h-96 bg-cyan-500 rounded-full blur-3xl animate-pulse delay-1000"></div>
+        <div className="absolute top-1/2 left-1/2 w-64 h-64 bg-purple-500 rounded-full blur-3xl animate-pulse delay-500"></div>
       </div>
 
-      <div className="max-w-7xl mx-auto px-6 relative z-10">
+      {/* Grid sutil de fondo */}
+      <div className="absolute inset-0 bg-[linear-gradient(rgba(255,255,255,0.02)_1px,transparent_1px),linear-gradient(90deg,rgba(255,255,255,0.02)_1px,transparent_1px)] bg-[size:64px_64px]"></div>
+
+      <div className="relative z-10 w-full max-w-7xl mx-auto px-6">
         
-        {/* Header */}
+        {/* Título principal */}
         <motion.div
           initial={{ opacity: 0, y: 30 }}
-          whileInView={{ opacity: 1, y: 0 }}
+          animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.8 }}
-          viewport={{ once: true }}
           className="text-center mb-16"
         >
-          <h2 className="text-5xl md:text-6xl font-black text-white mb-6">
-            Portafolio <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">Digital</span>
-          </h2>
+          <h1 className="text-5xl md:text-7xl font-black text-white mb-6">
+            NUESTRO
+            <span className="bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent"> PORTAFOLIO</span>
+          </h1>
           
           <div className="w-32 h-1 bg-gradient-to-r from-blue-400 to-cyan-400 mx-auto mb-8 rounded-full"></div>
 
-          <p className="text-xl text-gray-400 max-w-2xl mx-auto leading-relaxed">
-            Implementaciones técnicas con tecnología moderna y escalable.
-          </p>
+          {/* Texto descriptivo */}
+          <div className="text-2xl md:text-3xl font-light text-white mb-4">
+            Proyectos realizados con{' '}
+            <span className="font-bold bg-gradient-to-r from-blue-400 to-cyan-400 bg-clip-text text-transparent">
+              tecnología moderna
+            </span>
+          </div>
         </motion.div>
 
-        {/* Grid de proyectos */}
+        {/* Cards de proyectos - CENTRADAS CORRECTAMENTE */}
         <div className="flex justify-center mb-16">
           <motion.div
             initial={{ opacity: 0, y: 40 }}
-            whileInView={{ opacity: 1, y: 0 }}
-            transition={{ duration: 0.8, delay: 0.2 }}
-            viewport={{ once: true }}
+            animate={{ opacity: 1, y: 0 }}
+            transition={{ delay: 0.4, duration: 0.8 }}
             className="grid grid-cols-1 md:grid-cols-3 gap-8 w-auto"
           >
             {proyectos.map((proyecto, index) => (
               <motion.div
                 key={proyecto.id}
                 initial={{ opacity: 0, y: 30 }}
-                whileInView={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.6, delay: index * 0.1 }}
-                viewport={{ once: true }}
+                animate={{ opacity: 1, y: 0 }}
+                transition={{ delay: 0.6 + index * 0.15, duration: 0.6 }}
                 whileHover={{ y: -8, scale: 1.02 }}
-                className="bg-gradient-to-br from-gray-800/50 to-gray-900/80 backdrop-blur-sm border border-gray-700/50 rounded-3xl overflow-hidden group transition-all duration-300 relative min-h-[420px] w-80 flex flex-col hover:shadow-2xl hover:shadow-blue-500/10"
+                className={`bg-gradient-to-br from-gray-800/50 to-gray-900/80 backdrop-blur-sm border border-gray-700/50 rounded-3xl overflow-hidden ${proyecto.glow} hover:shadow-2xl transition-all duration-300 group relative min-h-[500px] w-80 flex flex-col`}
               >
+                {/* Efecto de borde luminoso */}
+                <div className={`absolute inset-0 rounded-3xl bg-gradient-to-r ${proyecto.color} opacity-0 group-hover:opacity-10 transition-opacity duration-300`}></div>
+
                 {/* Imagen del proyecto */}
                 <div className="relative h-48 bg-gradient-to-br from-blue-500/10 to-purple-500/10 overflow-hidden">
                   <div className="absolute inset-0 bg-gradient-to-t from-gray-900 to-transparent opacity-40"></div>
@@ -98,11 +113,7 @@ export default function Portafolio() {
                     src={proyecto.imagen}
                     alt={proyecto.titulo}
                     fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    onError={(e) => {
-                      const target = e.target as HTMLImageElement;
-                      target.style.display = 'none';
-                    }}
+                    className="object-cover transition-transform duration-500 group-hover:scale-110"
                   />
                   <div className="absolute top-4 right-4">
                     <span className="bg-gray-800/80 backdrop-blur-sm text-gray-200 text-xs font-medium px-3 py-1 rounded-full border border-gray-700/50">
@@ -130,11 +141,11 @@ export default function Portafolio() {
                       <motion.div 
                         key={i}
                         initial={{ opacity: 0, y: 10 }}
-                        whileInView={{ opacity: 1, y: 0 }}
+                        animate={{ opacity: 1, y: 0 }}
                         transition={{ delay: i * 0.1 }}
                         className="flex items-center justify-center gap-2 text-gray-300 group-hover:text-gray-200 transition-colors w-full"
                       >
-                        <div className="w-1.5 h-1.5 rounded-full bg-gradient-to-br from-blue-400 to-cyan-400 flex-shrink-0"></div>
+                        <div className={`w-1.5 h-1.5 rounded-full bg-gradient-to-br ${proyecto.color} flex-shrink-0`}></div>
                         <span className="font-medium text-xs">{tech}</span>
                       </motion.div>
                     ))}
@@ -168,29 +179,31 @@ export default function Portafolio() {
           </motion.div>
         </div>
 
-      {/* Botón Contactar */}
-<motion.div
-  initial={{ opacity: 0, y: 30 }}
-  whileInView={{ opacity: 1, y: 0 }}
-  transition={{ duration: 0.8, delay: 0.4 }}
-  viewport={{ once: true }}
-  className="text-center"
->
-  <motion.button
-    onClick={handleContactClick}
-    whileHover={{ scale: 1.05, y: -2 }}
-    whileTap={{ scale: 0.95 }}
-    className="bg-gradient-to-r from-green-500 to-emerald-400 hover:from-green-600 hover:to-emerald-500 
-      text-white font-bold text-lg py-4 px-12 rounded-2xl 
-      flex items-center gap-3 justify-center mx-auto
-      transition-all duration-300 shadow-2xl shadow-green-500/25 hover:shadow-green-500/40"
-  >
-    <MessageCircle className="w-6 h-6" />
-    Contactanos
-  </motion.button>
-</motion.div>
+        {/* Botón Contactar - EXACTAMENTE como el de servicios pero modificado */}
+        <motion.div
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          transition={{ delay: 1.2, duration: 0.8 }}
+          className="flex flex-col items-center gap-3 cursor-pointer"
+          onClick={handleContactClick}
+        >
+          <motion.div
+            animate={{ y: [0, 10, 0] }}
+            transition={{ duration: 2, repeat: Infinity }}
+            className="text-white/80 hover:text-white transition-colors"
+          >
+            <MessageCircle className="w-8 h-8" />
+          </motion.div>
+          <span className="text-sm text-white/60 font-medium uppercase tracking-wider hover:text-white transition-colors">
+            Contactanos por WhatsApp
+          </span>
+        </motion.div>
 
       </div>
+
+      {/* Línea decorativa inferior */}
+      <div className="absolute bottom-0 left-0 right-0 h-px bg-gradient-to-r from-transparent via-blue-400/50 to-transparent"></div>
+
     </section>
   );
 }

@@ -1,10 +1,12 @@
 import type { Metadata } from 'next';
+import { Inter } from 'next/font/google';
 import './globals.css';
-import Navbar from './components/navbar';
+
+const inter = Inter({ subsets: ['latin'] });
 
 export const metadata: Metadata = {
-  title: 'Web Adventures HN | Desarrollo Web Profesional',
-  description: 'Agencia especializada en diseño y desarrollo web en Honduras',
+  title: 'Web Adventures HN',
+  description: 'Soluciones digitales modernas - Desarrollo web profesional en Honduras',
 };
 
 export default function RootLayout({
@@ -14,11 +16,12 @@ export default function RootLayout({
 }) {
   return (
     <html lang="es">
-      <body>
-        <Navbar />
-        <main className="pt-16"> {/* Espacio para el navbar fixed */}
-          {children}
-        </main>
+      <head>
+        <link rel="icon" href="/wa-foot.png" />
+        <title>Web Adventures HN</title>
+      </head>
+      <body className={inter.className}>
+        {children}
       </body>
     </html>
   );
