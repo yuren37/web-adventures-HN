@@ -1,3 +1,4 @@
+import Navbar from './components/navbar';
 import Hero from './components/hero';
 import Services from './components/services';
 import Portfolio from './components/portfolio';
@@ -6,6 +7,8 @@ import Footer from './components/footer';
 export default function Home() {
   return (
     <div className="min-h-screen">
+      <Navbar />
+      
       <section id="inicio">
         <Hero />
       </section>
@@ -17,8 +20,6 @@ export default function Home() {
       <section id="portafolio">
         <Portfolio />
       </section>
-      
-      
       
       <Footer />
     </div>

@@ -179,25 +179,7 @@ export default function Portafolio() {
           </motion.div>
         </div>
 
-        {/* Botón Contactar - EXACTAMENTE como el de servicios pero modificado */}
-        <motion.div
-          initial={{ opacity: 0 }}
-          animate={{ opacity: 1 }}
-          transition={{ delay: 1.2, duration: 0.8 }}
-          className="flex flex-col items-center gap-3 cursor-pointer"
-          onClick={handleContactClick}
-        >
-          <motion.div
-            animate={{ y: [0, 10, 0] }}
-            transition={{ duration: 2, repeat: Infinity }}
-            className="text-white/80 hover:text-white transition-colors"
-          >
-            <MessageCircle className="w-8 h-8" />
-          </motion.div>
-          <span className="text-sm text-white/60 font-medium uppercase tracking-wider hover:text-white transition-colors">
-            Contactanos por WhatsApp
-          </span>
-        </motion.div>
+     
 
       </div>
 
